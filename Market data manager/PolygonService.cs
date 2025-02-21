@@ -14,12 +14,12 @@ using System.Text.Json.Serialization;
 namespace Market_data_manager
 {
 
-    public class MarketDataManager
-    {
+    public class PolygonService
+    {        
         private const string _apiKey = "EXBP72wblriTcUqVyHfRRKENzTfhxVhM"; // 🔹 הכנס את ה-API Key שלך
         private readonly HttpClient _httpClient;
         
-        public MarketDataManager(HttpClient httpClient)
+        public PolygonService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
