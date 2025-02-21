@@ -1,0 +1,6 @@
+@Market_data_controller_HostAddress = http://localhost:5019
+
+GET {{Market_data_controller_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
