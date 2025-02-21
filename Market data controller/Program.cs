@@ -8,7 +8,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient<MarketDataManager>();
+builder.Services.AddHttpClient<PolygonService>();
+builder.Services.AddHttpClient<AlphaVantageService>();
 
 var app = builder.Build();
 

@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 [Route("api/[controller]")]
 public class MarketDataController : ControllerBase
 {
-    private readonly MarketDataManager _marketDataManager;
+    private readonly PolygonService _marketDataManager;
+    private readonly AlphaVantageService _alphaVantageService;
 
-    public MarketDataController(MarketDataManager marketDataManager)
+    public MarketDataController(PolygonService marketDataManager, AlphaVantageService alphaVantageService)
     {
         _marketDataManager = marketDataManager;
+        _alphaVantageService = alphaVantageService;
     }
 
     [HttpGet("latest/{symbol}")]
@@ -30,6 +32,20 @@ public class MarketDataController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(500, new { message = $"Error fetching stock data: {ex.Message}" });
+        }
+    }
+
+    [HttpGet("{symbol}/{range}")]
+    public async Task<IActionResult> GetStockData(string symbol, int range)
+    {
+        try
+        {
+            var data = await _alphaVantageService.GetStockDataForPeriodAsync(symbol, range);
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
         }
     }
 }
