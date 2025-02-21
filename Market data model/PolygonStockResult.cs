@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Market_data_model
 {
-    public class StockResult
+    public class PolygonStockResult
     {
         [JsonPropertyName("T")]
         public string Symbol { get; set; }

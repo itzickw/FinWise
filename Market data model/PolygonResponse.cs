@@ -10,6 +10,6 @@ namespace Market_data_model
     public class PolygonResponse
     {
         [JsonPropertyName("results")]
-        public List<StockResult> Results { get; set; } = new List<StockResult>();
+        public List<PolygonStockResult> Results { get; set; } = new List<PolygonStockResult>();
     }
 }
